@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "861917588518",
+    "firebase_url": "https://android-apps-64c67.firebaseio.com",
+    "project_id": "android-apps-64c67",
+    "storage_bucket": "android-apps-64c67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861917588518:android:b799cbe771af1b19",
+        "android_client_info": {
+          "package_name": "com.amazondeals.rewardsunlimited"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861917588518-r725e206mev1mc2jgfjdvo6bkt26j5t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR6bsYaxLYNQsj8FZUWsTnfBxP9LQPf_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861917588518-r725e206mev1mc2jgfjdvo6bkt26j5t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861917588518:android:b744f8eb8f2ba6ec",
+        "android_client_info": {
+          "package_name": "com.myntradeals.rewardsunlimited"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861917588518-r725e206mev1mc2jgfjdvo6bkt26j5t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR6bsYaxLYNQsj8FZUWsTnfBxP9LQPf_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861917588518-r725e206mev1mc2jgfjdvo6bkt26j5t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

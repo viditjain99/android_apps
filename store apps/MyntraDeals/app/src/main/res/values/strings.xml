@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Myntra Deals</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="title_activity_sub_category">SubCategoryActivity</string>
+    <string name="title_activity_product_deals">ProductDealsActivity</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="fcm_token">FCM Token: %s</string>
+    <string name="notifications_admin_channel_name">Global channel</string>
+    <string name="notifications_admin_channel_description">Notifications sent from the app admin</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="title_activity_see_all_categories">SeeAllCategoriesActivity</string>
+    <string name="error_string">There was some error</string>
+    <string name="subtag">MYNTDLS</string>
+    <string name="store_name">Myntra</string>
+    <string name="splash_screen_image_url">https://learning.clubrewardsunlimited.com/img/sites/amazon.png</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="share">Share</string>
+    <string name="offer_price">Offer Price</string>
+    <string name="mrp">MRP</string>
+    <string name="product_name">Product Name</string>
+    <string name="nav_view_sub_header">Deals! Deals! Deals!</string>
+    <string name="brand">Brand</string>
+    <string name="description">Description</string>
+    <string name="discount">Discount</string>
+</resources>

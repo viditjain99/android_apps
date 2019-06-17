@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#fb002b</color>
+    <color name="black">#000000</color>
+    <color name="buy_now_button_colour">#fb002b</color>
+    <color name="share_button_colour">#010101</color>
+    <color name="button_text_colour">#e2e2e2</color>
+    <color name="buy_now_button_orange_colour">#ff6f00</color>
+    <color name="share_button_green_colour">#388e3c</color>
+    <color name="white">#ffffff</color>
+</resources>

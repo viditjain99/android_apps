@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/homeButton"
+        android:title="Home"
+        android:orderInCategory="30"
+        app:showAsAction="always"
+        android:icon="@drawable/home_white"/>
+</menu>

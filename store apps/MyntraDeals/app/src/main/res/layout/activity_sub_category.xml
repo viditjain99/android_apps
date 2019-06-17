@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.myntradeals.rewardsunlimited.SubCategoryActivity"
+    android:id="@+id/frameLayout"
+    android:clickable="false"
+    android:focusable="false">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ExpandableListView
+                android:id="@+id/subCategoryListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider"
+                android:childDivider="@drawable/divider"
+                android:scrollbars="none"
+                android:overScrollMode="never" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/adImage"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_margin="8dp"
+                android:layout_below="@+id/subCategoryListView" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/animationView"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notFoundImageView"
+            android:src="@drawable/not_found"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oops..."
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We don't have deals for "
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/messageTextView"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loadingView"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/errorLayout">
+
+        <ImageView
+            android:id="@+id/errorImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/network_error" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/errorMessageTextView"
+            android:layout_gravity="center"
+            android:text="There was some error"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Retry"
+            android:layout_margin="10dp"
+            android:id="@+id/retryButton"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button"/>
+
+    </LinearLayout>
+
+</FrameLayout>
