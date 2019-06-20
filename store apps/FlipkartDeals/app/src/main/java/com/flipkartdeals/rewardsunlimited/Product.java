@@ -38,6 +38,8 @@ public class Product implements Comparable<Product>
     @SerializedName("is_in_stock")
     String isInStock;
     String status;
+    @SerializedName("sort_order")
+    int sortOrder;
 
     @Override
     public int compareTo(Product o)

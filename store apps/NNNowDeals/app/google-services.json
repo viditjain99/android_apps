@@ -182,9 +182,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:861917588518:android:078372a56be7b05d",
+        "mobilesdk_app_id": "1:861917588518:android:cc78d53ba69b1c04",
         "android_client_info": {
-          "package_name": "com.nnnowdeals.rewardsunlimited"
+          "package_name": "com.nnnowdeal.rewardsunlimited"
         }
       },
       "oauth_client": [

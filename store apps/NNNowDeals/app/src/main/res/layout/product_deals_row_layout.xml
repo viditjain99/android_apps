@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <com.nnnowdeals.rewardsunlimited.StringLimiterTextView
+            <com.nnnowdeal.rewardsunlimited.StringLimiterTextView
                 android:id="@+id/productDealNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

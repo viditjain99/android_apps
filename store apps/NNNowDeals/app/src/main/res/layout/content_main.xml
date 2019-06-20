@@ -80,7 +80,7 @@
 
             </RelativeLayout>
 
-            <com.nnnowdeals.rewardsunlimited.CustomGridView
+            <com.nnnowdeal.rewardsunlimited.CustomGridView
                 android:id="@+id/categoriesGridView"
                 android:layout_width="match_parent"
                 android:layout_height="315dp"

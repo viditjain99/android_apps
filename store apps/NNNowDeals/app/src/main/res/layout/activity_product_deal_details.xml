@@ -121,7 +121,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productDealNameTextView" />
 
-            <com.nnnowdeals.rewardsunlimited.ProductDetailsStringLimiterTextView
+            <com.nnnowdeal.rewardsunlimited.ProductDetailsStringLimiterTextView
                 android:id="@+id/productDescriptionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -38,4 +38,6 @@ public class Product
     @SerializedName("is_in_stock")
     String isInStock;
     String status;
+    @SerializedName("sort_order")
+    int sortOrder;
 }

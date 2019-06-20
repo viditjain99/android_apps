@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements ProductSliderClic
                 {
                     Intent intent=new Intent(MainActivity.this,ProductDealsActivity.class);
                     intent.putExtra("SEARCH_KEY",productSliderObject.redirectUrl);
+                    intent.putExtra("MODE",1);
                     startActivity(intent);
                 }
             }

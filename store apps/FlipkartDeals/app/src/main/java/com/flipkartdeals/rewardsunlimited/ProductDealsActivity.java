@@ -801,7 +801,28 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         ArrayList<Product> products=productsResponse.products;
                         if(products.size()!=0)
                         {
-                            masterProductDealsArrayList.addAll(products);
+                            for(int i=0;i<products.size();i++)
+                            {
+                                if(products.get(i).isInStock.equals("1"))
+                                {
+                                    masterProductDealsArrayList.add(products.get(i));
+                                }
+                            }
+                            Collections.sort(masterProductDealsArrayList,Collections.reverseOrder(new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2)
+                                {
+                                    if(o1.sortOrder>o2.sortOrder)
+                                    {
+                                        return 1;
+                                    }
+                                    else if(o1.sortOrder<o2.sortOrder)
+                                    {
+                                        return -1;
+                                    }
+                                    return 0;
+                                }
+                            }));
                             maxPrice=Float.parseFloat(masterProductDealsArrayList.get(0).discountedPrice);
                             selectedMinPrice=0f;
                             for(int i=0;i<masterProductDealsArrayList.size();i++)
@@ -921,11 +942,26 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         {
                             for(int i=0;i<products.size();i++)
                             {
-                                if(Float.parseFloat(products.get(i).discountedPrice)<=price)
+                                if(Float.parseFloat(products.get(i).discountedPrice)<=price && products.get(i).isInStock.equals("1"))
                                 {
                                     masterProductDealsArrayList.add(products.get(i));
                                 }
                             }
+                            Collections.sort(masterProductDealsArrayList,Collections.reverseOrder(new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2)
+                                {
+                                    if(o1.sortOrder>o2.sortOrder)
+                                    {
+                                        return 1;
+                                    }
+                                    else if(o1.sortOrder<o2.sortOrder)
+                                    {
+                                        return -1;
+                                    }
+                                    return 0;
+                                }
+                            }));
                             maxPrice=Float.parseFloat(masterProductDealsArrayList.get(0).discountedPrice);
                             selectedMinPrice=0f;
                             for(int i=0;i<masterProductDealsArrayList.size();i++)
