@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -69,14 +70,21 @@ public class ProductDealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         else if(getItemViewType(i)==DEAL_ITEM)
         {
             Product productDeal=(Product) productDealsWithAdsArrayList.get(i);
-            if(productDeal.isInStock.equals("1"))
+            if(!productDeal.isInStock.equals("0"))
             {
                 final ProductDealsViewHolder productDealsViewHolder=(ProductDealsViewHolder) viewHolder;
                 String[] imageUrls=productDeal.images.split(Pattern.quote(" || "));
                 DisplayMetrics metrics=context.getResources().getDisplayMetrics();
                 int width=metrics.widthPixels;
                 productDealsViewHolder.relativeLayout.getLayoutParams().width=((width/2));
-                Picasso.with(context).load(imageUrls[0]).error(R.drawable.placeholder).into(productDealsViewHolder.productDealImageView);
+                if(!imageUrls[0].equals(""))
+                {
+                    Picasso.with(context).load(imageUrls[0]).error(R.drawable.placeholder).into(productDealsViewHolder.productDealImageView);
+                }
+                else
+                {
+                    productDealsViewHolder.productDealImageView.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.placeholder));
+                }
                 productDealsViewHolder.productDealNameTextView.setText(productDeal.productName);
                 productDealsViewHolder.productDealMrpTextView.setText("₹"+productDeal.mrp);
                 productDealsViewHolder.productDealMrpTextView.setPaintFlags(productDealsViewHolder.productDealMrpTextView.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);

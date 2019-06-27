@@ -8,6 +8,6 @@ import retrofit2.http.POST;
 public interface ProductsService
 {
     @FormUrlEncoded
-    @POST("products")
+    @POST("productsnew")
     Call<ProductsResponse> getProducts(@Field("Content-type") String contentType, @Field("ProductCategory") String productCategory, @Field("MODE") String mode);
 }

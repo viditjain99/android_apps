@@ -30,8 +30,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductDealDetailsActivity extends AppCompatActivity {
-
+public class ProductDealDetailsActivity extends AppCompatActivity
+{
     ViewPager photosViewPager;
     TextView productNameTextView,productDescriptionTextView,productBrandTextView,productMrpTextView,productOfferPriceTextView,discountPercentTextView;
     Button buyNowButton,shareButton;
@@ -44,7 +44,8 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
     LinearLayout dotsPanel;
     int dotsCount=0;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_product_deal_details);
@@ -117,7 +118,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
         });
 
         productNameTextView.setText(productName);
-        String[] productDescription=productDescriptionString.split(Pattern.quote(" || "));
+        String[] productDescription=productDescriptionString.split(Pattern.quote(" LFLF "));
         productDescriptionString="";
         for(int i=0;i<productDescription.length;i++)
         {
@@ -226,7 +227,8 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -248,6 +250,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void onBackPressed()
     {

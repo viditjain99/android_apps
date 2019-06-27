@@ -43,6 +43,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -176,6 +178,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onBuyNowClick(View view, int position)
             {
                 Product product=(Product) productDealsWithAdsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -218,6 +222,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onShareClick(int position)
             {
                 final Product product=(Product) productDealsWithAdsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -289,6 +295,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onBuyNowClick(View view, int position)
             {
                 Product product=(Product) tempProductDealsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -331,6 +339,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onShareClick(int position)
             {
                 final Product product=(Product) tempProductDealsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -800,7 +810,29 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         ArrayList<Product> products=productsResponse.products;
                         if(products.size()!=0)
                         {
-                            masterProductDealsArrayList.addAll(products);
+                            parseData(products);
+                            for(int i=0;i<products.size();i++)
+                            {
+                                if(!products.get(i).isInStock.equals("0"))
+                                {
+                                    masterProductDealsArrayList.add(products.get(i));
+                                }
+                            }
+                            Collections.sort(masterProductDealsArrayList,Collections.reverseOrder(new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2)
+                                {
+                                    if(o1.sortOrder>o2.sortOrder)
+                                    {
+                                        return 1;
+                                    }
+                                    else if(o1.sortOrder<o2.sortOrder)
+                                    {
+                                        return -1;
+                                    }
+                                    return 0;
+                                }
+                            }));
                             maxPrice=Float.parseFloat(masterProductDealsArrayList.get(0).discountedPrice);
                             selectedMinPrice=0f;
                             for(int i=0;i<masterProductDealsArrayList.size();i++)
@@ -918,6 +950,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         ArrayList<Product> products=productsResponse.products;
                         if(products.size()!=0)
                         {
+                            parseData(products);
                             for(int i=0;i<products.size();i++)
                             {
                                 if(Float.parseFloat(products.get(i).discountedPrice)<=price)
@@ -925,6 +958,28 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                                     masterProductDealsArrayList.add(products.get(i));
                                 }
                             }
+                            for(int i=0;i<products.size();i++)
+                            {
+                                if(Float.parseFloat(products.get(i).discountedPrice)<=price && !products.get(i).isInStock.equals("0"))
+                                {
+                                    masterProductDealsArrayList.add(products.get(i));
+                                }
+                            }
+                            Collections.sort(masterProductDealsArrayList,Collections.reverseOrder(new Comparator<Product>() {
+                                @Override
+                                public int compare(Product o1, Product o2)
+                                {
+                                    if(o1.sortOrder>o2.sortOrder)
+                                    {
+                                        return 1;
+                                    }
+                                    else if(o1.sortOrder<o2.sortOrder)
+                                    {
+                                        return -1;
+                                    }
+                                    return 0;
+                                }
+                            }));
                             maxPrice=Float.parseFloat(masterProductDealsArrayList.get(0).discountedPrice);
                             selectedMinPrice=0f;
                             for(int i=0;i<masterProductDealsArrayList.size();i++)
@@ -1212,6 +1267,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                     {
                         Toast.makeText(ProductDealsActivity.this,productsAdded+" results",Toast.LENGTH_SHORT).show();
                     }
+                    sortByDialogOptionApplied=-1;
                 }
                 filterApplied=true;
             }
@@ -1228,6 +1284,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                 brandsListViewAdapter.uncheckAll();
                 brandsListViewAdapter.notifyDataSetChanged();
                 activeArrayList=WITHOUT_FILTER;
+                sortByDialogOptionApplied=-1;
                 productDealsRecyclerView.swapAdapter(adapter,true);
                 adapter.notifyDataSetChanged();
                 filterApplied=false;
@@ -1274,7 +1331,33 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             }
         });
     }
-
+    private void parseData(ArrayList<Product> products)
+    {
+        DecimalFormat decimalFormat=new DecimalFormat("0.00");
+        for(int i=0;i<products.size();i++)
+        {
+            Product product=products.get(i);
+            if(!product.imageUrl1.equals("null"))
+            {
+                product.images=product.images+product.imageUrl1+" || ";
+            }
+            if(!product.imageUrl2.equals("null"))
+            {
+                product.images=product.images+product.imageUrl2+" || ";
+            }
+            if(!product.imageUrl3.equals("null"))
+            {
+                product.images=product.images+product.imageUrl3+" || ";
+            }
+            if(!product.imageUrl4.equals("null"))
+            {
+                product.images=product.images+product.imageUrl4+" || ";
+            }
+            float percentage=((Float.parseFloat(product.mrp)-Float.parseFloat(product.discountedPrice))/Float.parseFloat(product.mrp))*100;
+            decimalFormat.setRoundingMode(RoundingMode.UP);
+            product.discountPercentage=decimalFormat.format(percentage);
+        }
+    }
 
     public void addProductsToList()
     {

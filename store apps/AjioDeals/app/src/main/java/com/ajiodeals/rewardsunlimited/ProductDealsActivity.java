@@ -42,6 +42,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -176,6 +178,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onBuyNowClick(View view, int position)
             {
                 Product product=(Product) productDealsWithAdsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -218,6 +222,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onShareClick(int position)
             {
                 final Product product=(Product) productDealsWithAdsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -289,6 +295,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onBuyNowClick(View view, int position)
             {
                 Product product=(Product) tempProductDealsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -331,6 +339,8 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
             public void onShareClick(int position)
             {
                 final Product product=(Product) tempProductDealsArrayList.get(position);
+                snackbar.setText("Please wait...");
+                snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
                 Call<LinkResponse> call=ApiClient.getLinkService().getLink(product.productUrl, getString(R.string.subtag));
                 call.enqueue(new Callback<LinkResponse>()
@@ -802,9 +812,10 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         ArrayList<Product> products=productsResponse.products;
                         if(products.size()!=0)
                         {
+                            parseData(products);
                             for(int i=0;i<products.size();i++)
                             {
-                                if(products.get(i).isInStock.equals("1"))
+                                if(!products.get(i).isInStock.equals("0"))
                                 {
                                     masterProductDealsArrayList.add(products.get(i));
                                 }
@@ -929,7 +940,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
         }
         else if(mode==0)
         {
-            Call<ProductsResponse> call=ApiClient.getProductsService().getProducts("application/json",getString(R.string.store_name),"->");
+            Call<ProductsResponse> call=ApiClient.getProductsService().getProducts("application/json",getString(R.string.store_name),getString(R.string.store_name));
             call.enqueue(new Callback<ProductsResponse>()
             {
                 @Override
@@ -941,9 +952,10 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                         ArrayList<Product> products=productsResponse.products;
                         if(products.size()!=0)
                         {
+                            parseData(products);
                             for(int i=0;i<products.size();i++)
                             {
-                                if(Float.parseFloat(products.get(i).discountedPrice)<=price && products.get(i).isInStock.equals("1"))
+                                if(Float.parseFloat(products.get(i).discountedPrice)<=price && !products.get(i).isInStock.equals("0"))
                                 {
                                     masterProductDealsArrayList.add(products.get(i));
                                 }
@@ -1253,6 +1265,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                     {
                         Toast.makeText(ProductDealsActivity.this,productsAdded+" results",Toast.LENGTH_SHORT).show();
                     }
+                    sortByDialogOptionApplied=-1;
                 }
                 filterApplied=true;
             }
@@ -1268,6 +1281,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                 tempProductDealsArrayList.clear();
                 brandsListViewAdapter.uncheckAll();
                 brandsListViewAdapter.notifyDataSetChanged();
+                sortByDialogOptionApplied=-1;
                 activeArrayList=WITHOUT_FILTER;
                 productDealsRecyclerView.swapAdapter(adapter,true);
                 adapter.notifyDataSetChanged();
@@ -1316,6 +1330,33 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
         });
     }
 
+    private void parseData(ArrayList<Product> products)
+    {
+        DecimalFormat decimalFormat=new DecimalFormat("0.00");
+        for(int i=0;i<products.size();i++)
+        {
+            Product product=products.get(i);
+            if(!product.imageUrl1.equals("null"))
+            {
+                product.images=product.images+product.imageUrl1+" || ";
+            }
+            if(!product.imageUrl2.equals("null"))
+            {
+                product.images=product.images+product.imageUrl2+" || ";
+            }
+            if(!product.imageUrl3.equals("null"))
+            {
+                product.images=product.images+product.imageUrl3+" || ";
+            }
+            if(!product.imageUrl4.equals("null"))
+            {
+                product.images=product.images+product.imageUrl4+" || ";
+            }
+            float percentage=((Float.parseFloat(product.mrp)-Float.parseFloat(product.discountedPrice))/Float.parseFloat(product.mrp))*100;
+            decimalFormat.setRoundingMode(RoundingMode.UP);
+            product.discountPercentage=decimalFormat.format(percentage);
+        }
+    }
 
     public void addProductsToList()
     {

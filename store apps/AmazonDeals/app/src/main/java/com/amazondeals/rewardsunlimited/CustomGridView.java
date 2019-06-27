@@ -28,7 +28,7 @@ public class CustomGridView extends GridView
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        if (isExpanded())
+        if(isExpanded())
         {
             int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
             super.onMeasure(widthMeasureSpec, expandSpec);
@@ -43,6 +43,6 @@ public class CustomGridView extends GridView
 
     public void setExpanded(boolean expanded)
     {
-        this.expanded = expanded;
+        this.expanded=expanded;
     }
 }

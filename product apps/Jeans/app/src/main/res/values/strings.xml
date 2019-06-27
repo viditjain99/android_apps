@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Jeans</string>
+    <string name="title">Amazing Jeans Deals</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -23,7 +24,7 @@
     <string name="fcm_message">FCM Message</string>
     <string name="title_activity_see_all_categories">SeeAllCategoriesActivity</string>
     <string name="error_string">There was some error</string>
-    <string name="subtag">ckmiscl3-21</string>
+    <string name="subtag">JEANDLS</string>
     <string name="splash_screen_image_url">https://learning.clubrewardsunlimited.com/img/sites/amazon.png</string>
     <string name="buy_now">Buy Now</string>
     <string name="share">Share</string>

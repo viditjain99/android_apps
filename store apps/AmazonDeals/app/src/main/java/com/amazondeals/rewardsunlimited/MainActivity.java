@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements ProductSliderClic
     Snackbar snackbar;
     ProgressBar startUpLoading;
     int mode;
-    static ArrayList<String> adIds=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -114,7 +114,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
         });
 
         productNameTextView.setText(productName);
-        String[] productDescription=productDescriptionString.split(Pattern.quote(" || "));
+        String[] productDescription=productDescriptionString.split(Pattern.quote(" LFLF "));
         productDescriptionString="";
         for(int i=0;i<productDescription.length;i++)
         {

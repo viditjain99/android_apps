@@ -2,48 +2,37 @@ package com.nnnowdeal.rewardsunlimited;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Product implements Comparable<Product>
+public class Product
 {
-    @SerializedName("Brand")
     String brand;
-    @SerializedName("CategoryCashbackID")
-    String categoryCashbackId;
-    @SerializedName("CategoryURLProductURL")
-    String categoryUrlProductUrl;
-    @SerializedName("DiscountPercentage")
     String discountPercentage;
-    @SerializedName("DiscountThreshold")
-    String discountThreshold;
-    @SerializedName("DiscountedPrice")
+    @SerializedName("discounted_price")
     String discountedPrice;
-    @SerializedName("EKCategory")
-    String eKCategory;
-    @SerializedName("Images")
-    String images;
-    @SerializedName("MRP")
+    @SerializedName("image_URL1")
+    String imageUrl1;
+    @SerializedName("image_URL2")
+    String imageUrl2;
+    @SerializedName("image_URL3")
+    String imageUrl3;
+    @SerializedName("image_URL4")
+    String imageUrl4;
+    String images="";
+    @SerializedName("original_price")
     String mrp;
-    @SerializedName("ProductDetails")
+    @SerializedName("product_highlights_app")
     String productDetails;
-    @SerializedName("ProductName")
+    @SerializedName("product_name")
     String productName;
-    @SerializedName("ProductURL")
+    @SerializedName("product_url")
     String productUrl;
-    @SerializedName("RetailerCategory")
+    @SerializedName("seller_category")
     String retailerCategory;
-    @SerializedName("RetailerName")
+    @SerializedName("seller")
     String retailerName;
-    @SerializedName("Type")
-    String type;
+    @SerializedName("product_id")
     String id;
-    @SerializedName("is_in_stock")
+    @SerializedName("availability")
     String isInStock;
-    String status;
-
-    @Override
-    public int compareTo(Product o)
-    {
-        float result=Float.parseFloat(this.discountedPrice)-Float.parseFloat(o.discountedPrice);
-        int r=(int) result;
-        return r;
-    }
+    @SerializedName("popularity")
+    int sortOrder;
 }

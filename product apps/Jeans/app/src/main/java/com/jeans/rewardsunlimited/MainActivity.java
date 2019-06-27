@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements ProductSliderClic
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setOverflowIcon(getDrawable(R.drawable.ic_action_overflow));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"white\">"+getString(R.string.app_name)+ "</font>"));   //setting title
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"white\">"+getString(R.string.title)+ "</font>"));   //setting title
 
         productSliderViewPager=findViewById(R.id.viewPager);
         retailersGridView=findViewById(R.id.retailersGridView);

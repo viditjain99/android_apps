@@ -10,7 +10,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/startup_icon"
-        android:label="Jeans"
+        android:label="Amazing Jeans Deals"
         android:roundIcon="@mipmap/startup_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
