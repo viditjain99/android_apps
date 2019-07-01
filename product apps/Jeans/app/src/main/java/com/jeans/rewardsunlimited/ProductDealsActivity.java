@@ -83,7 +83,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
     HashSet<String> selectedBrandsInFilter=new HashSet<>();
     CrystalRangeSeekbar priceSeekBar;
     float maxPrice;
-    Button applyFilterButton,clearFilterButton;
+    Button applyFilterButton,clearFilterButton,retryButton;
     Number selectedMinPrice,selectedMaxPrice;
     DrawerLayout drawer;
     boolean filterApplied=false;
@@ -146,6 +146,7 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
         brandsListViewLabelTextView=findViewById(R.id.brandsListViewLabelTextView);
         filterButtonsLayout=findViewById(R.id.filterButtonsLayout);
         noDealsFoundTextViewNav=findViewById(R.id.noDealsFoundTextView);
+        retryButton=findViewById(R.id.retryButton);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"white\">"+retailerNameInTitle+ "</font>"));
         getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.black));
@@ -482,6 +483,17 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                 maxPriceTextView.setText("₹"+maxValue);
                 selectedMaxPrice=maxValue;
                 selectedMinPrice=minValue;
+            }
+        });
+        retryButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                errorLayout.setVisibility(View.GONE);
+                filtersLoadingView.setVisibility(View.VISIBLE);
+                loadingView.setVisibility(View.VISIBLE);
+                fetchData(retailerName);
             }
         });
         fetchData(retailerName);
@@ -1031,6 +1043,20 @@ public class ProductDealsActivity extends AppCompatActivity implements Navigatio
                             timer.cancel();
                         }
                     },2000,2000);
+                }
+                else
+                {
+                    if(retryCount<=MainActivity.MAXIMUM_RETRY_COUNT)
+                    {
+                        retryCount++;
+                        call.clone().enqueue(this);
+                    }
+                    else
+                    {
+                        loadingView.setVisibility(View.GONE);
+                        productDealsRecyclerView.setVisibility(View.GONE);
+                        errorLayout.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 

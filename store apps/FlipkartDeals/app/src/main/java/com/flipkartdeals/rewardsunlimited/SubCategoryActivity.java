@@ -266,7 +266,7 @@ public class SubCategoryActivity extends AppCompatActivity
                 else
                 {
                     subCategoryListView.setVisibility(View.GONE);
-                    animationView.setVisibility(View.VISIBLE);
+                    animationView.setVisibility(View.GONE);
                     loadingView.setVisibility(View.GONE);
                     adImage.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);

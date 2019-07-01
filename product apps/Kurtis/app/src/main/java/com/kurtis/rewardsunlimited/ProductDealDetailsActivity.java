@@ -170,7 +170,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<LinkResponse> call, Throwable t)
                     {
-                        Toast.makeText(ProductDealDetailsActivity.this,"Invalid link",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductDealDetailsActivity.this,getString(R.string.error_string),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -206,7 +206,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<LinkResponse> call, Throwable t)
                     {
-                        Toast.makeText(ProductDealDetailsActivity.this,"Invalid link",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductDealDetailsActivity.this,getString(R.string.error_string),Toast.LENGTH_SHORT).show();
                     }
                 });
             }

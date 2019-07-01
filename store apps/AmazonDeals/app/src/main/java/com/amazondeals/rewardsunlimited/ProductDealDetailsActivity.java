@@ -175,7 +175,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity
                     @Override
                     public void onFailure(Call<LinkResponse> call, Throwable t)
                     {
-                        Toast.makeText(ProductDealDetailsActivity.this,"Invalid link",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductDealDetailsActivity.this,"Network error",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -211,7 +211,7 @@ public class ProductDealDetailsActivity extends AppCompatActivity
                     @Override
                     public void onFailure(Call<LinkResponse> call, Throwable t)
                     {
-                        Toast.makeText(ProductDealDetailsActivity.this,"Invalid link",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductDealDetailsActivity.this,"Network error",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

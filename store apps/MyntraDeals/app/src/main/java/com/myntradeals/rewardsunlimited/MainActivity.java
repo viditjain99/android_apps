@@ -364,6 +364,7 @@ public class MainActivity extends AppCompatActivity implements ProductSliderClic
                     categoriesGridView.setVisibility(View.VISIBLE);
                     adView.setVisibility(View.VISIBLE);
                     startUpLoading.setVisibility(View.GONE);
+                    errorLayout.setVisibility(View.GONE);
                     retryCount=0;
                 }
                 else

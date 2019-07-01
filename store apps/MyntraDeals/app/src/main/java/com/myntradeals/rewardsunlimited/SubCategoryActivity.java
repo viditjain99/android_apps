@@ -120,6 +120,7 @@ public class SubCategoryActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                loadingView.setVisibility(View.VISIBLE);
                 loadData();
             }
         });
@@ -266,7 +267,7 @@ public class SubCategoryActivity extends AppCompatActivity
                 else
                 {
                     subCategoryListView.setVisibility(View.GONE);
-                    animationView.setVisibility(View.VISIBLE);
+                    animationView.setVisibility(View.GONE);
                     loadingView.setVisibility(View.GONE);
                     adImage.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);

@@ -201,6 +201,7 @@ public class SubCategoryActivity extends AppCompatActivity
                     if(products.size()==0)
                     {
                         animationView.setVisibility(View.VISIBLE);
+                        errorLayout.setVisibility(View.GONE);
                         subCategoryListView.setVisibility(View.GONE);
                         loadingView.setVisibility(View.GONE);
                         adImage.setVisibility(View.GONE);
@@ -266,7 +267,7 @@ public class SubCategoryActivity extends AppCompatActivity
                 else
                 {
                     subCategoryListView.setVisibility(View.GONE);
-                    animationView.setVisibility(View.VISIBLE);
+                    animationView.setVisibility(View.GONE);
                     loadingView.setVisibility(View.GONE);
                     adImage.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
