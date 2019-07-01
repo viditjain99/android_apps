@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     CustomTabsIntent customTabsIntent;
     CustomTabsIntent.Builder intentBuilder;
     ConstraintLayout constraintLayout;
+    TextView zoomTextView;
     int currentIndex=0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,9 +53,11 @@ public class MainActivity extends AppCompatActivity
         imageRecyclerView=findViewById(R.id.imageRecyclerView);
         progressBar=findViewById(R.id.loading);
         constraintLayout=findViewById(R.id.constraintLayout);
+        zoomTextView=findViewById(R.id.zoomTextView);
 
         buttonsLinearLayout.setVisibility(View.GONE);
         imageRecyclerView.setVisibility(View.GONE);
+        zoomTextView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
         adapter=new ImageSliderAdapter(this,masterProductsArrayList);
@@ -190,6 +194,7 @@ public class MainActivity extends AppCompatActivity
                     adapter.notifyDataSetChanged();
                     buttonsLinearLayout.setVisibility(View.VISIBLE);
                     imageRecyclerView.setVisibility(View.VISIBLE);
+                    zoomTextView.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
                 else
